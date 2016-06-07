@@ -1,0 +1,98 @@
+﻿@model OnlineShop.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+<h2>AddProduct</h2>
+
+@using (Html.BeginForm("AddProduct", "AddProduct", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Produkt</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Product.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Product.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Product.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Product.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Product.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Product.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageUpload, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+
+                @Html.TextBoxFor(model => model.ImageUpload, new { type = "file" })
+                @*<input type="hidden" value="@Model.sciezkaObrazka" name="sciezkaObrazka" />*@
+                @Html.ValidationMessageFor(model => model.ImageUpload, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default">
+            </div>
+        </div>
+
+    </div>
+}
+
+<section class="row" style="margin-bottom:20px">
+    <header class="col-xs-12">
+        <hr class="line" style="color:brown;" />
+        <h2>Skontaktuj się z nami<a name="form"></a></h2>
+    </header>
+    <div class="col-xs-12 col-md-6" id="contactFormContainer" style="width:700px">
+        <form action="/contact/SendMessage" method="POST" role="form" id="contactForm" class="form-horizontal highlight-errors" novalidate="novalidate">
+            <div class="form-group">
+                <label for="emailAddress" class="col-xs-12 col-sm-3 font-normal">Nazwa produktu:</label>
+                <div class="col-xs-12 col-sm-9">
+                    <input type="email" class="form-control" id="emailAddress" name="Email" placeholder="adres e-mail" maxlength="60">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="emailAddress" class="col-xs-12 col-sm-3 font-normal">Cena:</label>
+                <div class="col-xs-12 col-sm-9">
+                    <input type="email" class="form-control" id="emailAddress" name="Topic" placeholder="temat" maxlength="60">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="question" class="col-xs-12 col-sm-3 font-normal">Opis:</label>
+                <div class="col-xs-12 col-sm-9">
+                    <textarea name="Message" id="question" class="form-control" rows="5" style="width:400px;" placeholder="wiadomość" required="required" maxlength="2000"></textarea>
+                </div>
+            </div>
+            <div class="col-xs-8 col-sm-6 col-sm-offset-3">
+                <button type="submit" class="btn btn-danger" style="background-color:gray; border-color:black;">Dodaj produkt!</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section class="row">
+    <div>
+        <span style="color:red">@ViewBag.Title</span><br />
+    </div>
+</section>

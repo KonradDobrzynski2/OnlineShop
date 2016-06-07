@@ -1,0 +1,95 @@
+﻿@model  OnlineShop.Models.ContactForm
+
+<div class="container">
+    <h1>Kontakt</h1>
+
+    <section class="row" style="margin-bottom:20px">
+        <header class="col-xs-12">
+            <hr class="line" style="color:black;"/>
+            <h2>Sklep internetowy i reklamacje</h2>
+        </header>
+        <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4" style="border-right:solid; border-right-color:gray;">
+            <p>
+                <b>Obsługa sklepu internetowego</b><br />
+                <br /><span class="pull-left">E-mail</span><span class="pull-right"><a href="mailto:biuro@motocar.pl">biuro@motocar.pl</a></span>
+                <br /><span class="pull-left">Telefon</span><span class="pull-right"><a href="tel:45440066">45 44 00 66</a></span><br />
+            </p>
+            <p>
+                <span class="pull-left">Godziny pracy:</span><br />
+                <span class="pull-left">poniedziałek - piątek</span>
+                <span class="pull-right">08:00 - 16:00</span><br />
+                <span class="pull-left">sobota - niedziela</span>
+                <span class="pull-right">08:00 - 12:00</span><br />
+            </p>
+        </div>
+        <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4" style="border-right:solid; border-right-color:gray;">
+            <p>
+                <b>Reklamacje</b><br />
+                <br /><span class="pull-left">E-mail</span><span class="pull-right"><a href="mailto:reklamacje@motocar.pl">reklamacje@motocar.pl</a></span>
+                <br /><span class="pull-left">Telefon</span><span class="pull-right"><a href="tel:45440068">45 44 00 68</a></span><br />
+            </p>
+            <p>
+                <span class="pull-left">Godziny pracy:</span><br />
+                <span class="pull-left">poniedziałek - piątek</span>
+                <span class="pull-right">08:00 - 18:00</span><br />
+                <span class="pull-left">sobota</span>
+                <span class="pull-right">08:00 - 15:00</span><br />
+            </p>
+        </div>
+        <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 col-md-3">
+            <p class="col-md-offset-1">
+                <b>Adres centrali MotoCar.pl</b><br />
+                <br>87-100 Toruń
+                <br>ul. Grudziądzka 5
+            </p>
+        </div>
+    </section>
+
+    <section class="row" style="margin-bottom:20px">
+        <header class="col-xs-12">
+            <hr class="line" style="color:black;" />
+            <h2>Główna siedziba firmy</h2>
+        </header>
+        <div class="col-xs-12 col-md-6" id="Googlemaps" style="width:700px">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2400.175558662408!2d18.6009533158261!3d53.01720697991142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470334fcab77f73f%3A0x34efc318d4d8c9e4!2sAfsdfgdklsdlfsdkfsdl+sdfewrewwef!5e0!3m2!1spl!2spl!4v1465074004530" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section class="row" style="margin-bottom:20px">
+        <header class="col-xs-12">
+            <hr class="line" style="color:brown;" />
+            <h2>Skontaktuj się z nami<a name="form"></a></h2>
+        </header>
+        <div class="col-xs-12 col-md-6" id="contactFormContainer" style="width:700px">
+            <form action="/contact/SendMessage" method="POST" role="form" id="contactForm" class="form-horizontal highlight-errors" novalidate="novalidate">
+                <div class="form-group">
+                    <label for="emailAddress" class="col-xs-12 col-sm-3 font-normal">Twój adres e-mail:</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="email" class="form-control" id="emailAddress" name="Email" placeholder="adres e-mail" maxlength="60">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="emailAddress" class="col-xs-12 col-sm-3 font-normal">Temat:</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="email" class="form-control" id="emailAddress" name="Topic" placeholder="temat" maxlength="60">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="question" class="col-xs-12 col-sm-3 font-normal">Wiadomość:</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <textarea name="Message" id="question" class="form-control" rows="5" style="width:400px;" placeholder="wiadomość" required="required" maxlength="2000"></textarea>
+                    </div>
+                </div>
+                <div class="col-xs-8 col-sm-6 col-sm-offset-3">
+                    <button type="submit" class="btn btn-danger" style="background-color:gray; border-color:black;">Wyślij!</button>
+                </div>  
+            </form>
+        </div>
+    </section>
+
+    <section class="row">
+        <div>
+            <span style="color:red">@ViewBag.Title</span><br />
+        </div>
+    </section>
+</div>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<OnlineShop.Models.Product>
+
+@{
+    ViewBag.Title = "Strona główna";
+}
+
+<h2>Spis produktów</h2>
+
+@if (ViewBag.Message == "Produkt został dodany do koszyka")
+{
+    <h4 style="color:green; margin-top:25px"><b>@ViewBag.Message</b></h4>
+}
+else if (ViewBag.Message == "Zaloguj się aby dokonać zakupu. Jeśli nie masz jeszcze konta wejdz do sekcji \"Rejestracja\"")
+{
+    <h4 style="color:red; margin-top:25px"><b>@ViewBag.Message</b></h4>
+}
+
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td colspan="5">
+                <hr style="height:3px;border:none;color:gray;background-color:gray;"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <img src="@item.PathImage" width="150" height="150" />
+            </td>
+
+            <td valign="middle" align="center" width="250px">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+            <td valign="middle" align="center" width="300px">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+
+            <td valign="middle" align="center" width="100px" style="font-size:larger;">
+                <b style="margin-right:100px; margin-left:100px">@(item.Price + "zł")</b>
+            </td>
+
+            <td>
+                @Html.ActionLink("Dodaj produkt do koszyka", "AddToBasket", new { Id = item.Id }, new { @class = "btn btn-success", @style = "background-color:gray; border-color:black;" })               
+            </td>
+        </tr>
+    }
+</table>
